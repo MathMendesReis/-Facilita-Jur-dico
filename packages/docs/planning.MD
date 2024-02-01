@@ -16,7 +16,7 @@
 - [ ] Como usuário, quero ser capaz de listar, filtrar, e cadastrar clientes na plataforma.
 
 ### Tarefas:
-1. [ ] Criar a tabela do banco de dados para armazenar informações de clientes (DDL).
+1. [x] Criar a tabela do banco de dados para armazenar informações de clientes (DDL).
 2. [ ] Implementar API para listar clientes.
 3. [ ] Implementar API para cadastrar clientes.
 4. [ ] Implementar API para filtrar clientes com base nas informações cadastradas.
