@@ -4,12 +4,16 @@
     "packages/*"
   ],
   "scripts": {
-    "start:frontend": "cd frontend && npm start",
+    "start:frontend": "cd packages && cd frontend && npm run build && npm run dev",
     "start:backend": "cd packages && cd api && npm run dev",
     "start:backend:build": "cd packages && cd api && npm run build && npm run start",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
   },
   "devDependencies": {
     "turbo": "^1.5.5"
+  },
+  "dependencies": {
+    "@types/uuid": "^9.0.8"
   }
 }
+
