@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import { clientRouter } from './modules/cliente/routers/findAllClientesRouter'
+import { clientRouter } from './modules/cliente/routers/clientRouter'
 
 dotenv.config()
 
