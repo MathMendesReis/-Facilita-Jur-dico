@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { GetAllClienteUseCase } from '../use-cases/getAllClienteUseCase';
+
 export class FindAllClientesController {
     constructor(private getAllClienteUseCase:GetAllClienteUseCase) {}
 
