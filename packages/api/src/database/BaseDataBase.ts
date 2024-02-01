@@ -1,21 +1,24 @@
-import { knex } from "knex";
-import dotenv from 'dotenv'
+import postgres from 'postgres';
 
-dotenv.config()
+const sql = postgres({
+  host: 'localhost',
+  port: 5432,
+  user: 'postgres',
+  password: 'docker',
+  database: 'facilita-juridico',
+});
 
-export abstract class BaseDatabase {
-  protected static connection = knex({
-    client: "sqlite3",
-    connection: {
-      filename: process.env.DB_FILE_PATH as string,
-    },
-    useNullAsDefault: true,
-    pool: {
-      min: 0,
-      max: 1,
-      afterCreate: (conn: any, cb: any) => {
-        conn.run("PRAGMA foreign_keys = ON", cb);
-      },
-    },
-  });
-}
+export default sql;
+
+// async function createAndInsertData() {
+//   try {
+//     const reste = await sql`
+//       SELECT * FROM cliente_tb;
+//     `;
+//     console.log(reste)
+//   } catch (error) {
+//     console.error('Erro:');
+//   }
+// }
+
+// createAndInsertData();
