@@ -10,7 +10,7 @@ export function useClientFecth() {
         return instance.get(API_URL)
       }
     const { isPending, error, data } = useQuery({
-        queryKey: ['repoData'],
+        queryKey: ['useClientFecth'],
         queryFn: () => fecth(),
       })
 

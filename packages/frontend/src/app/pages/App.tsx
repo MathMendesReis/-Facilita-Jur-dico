@@ -40,7 +40,7 @@ export function App() {
                 <div className="bg-[#0f172a] h-[1px] w-full opacity-65"/>
                </div>
               </div>
-                <Link to='/dashboard' title="ir para dashboard">
+                <Link to='/dashboard?show=overwiew' title="ir para dashboard">
                   <Button className="w-full bg-[#2563eb] hover:opacity-95 hover:bg-[#2563eb]">
                       <p>ir para dashboard</p>
                   </Button>
