@@ -1,10 +1,21 @@
 import { FindAdressStoreUseCase } from "./getAdressStore";
 import { GetAllClienteUseCase } from "./getAllClienteUseCase";
 
-interface AddressStore {
+interface ClienteFormat {
+    id: string;
+    nome: string;
+    email: string;
+    telefone: string;
+    rua: string;
+    numero: string | null;
+    bairro: string;
+    cidade: string;
+    estado: string;
     lat: string;
     lon: string;
-}
+    distancia: number;
+    creation_date: string;
+  }
 
 export class SortClientsByAddressUseCase {
     constructor(
@@ -32,7 +43,7 @@ export class SortClientsByAddressUseCase {
             lon: lonNumero,
         };
 
-        const results: { nome: string; distancia: number }[] = [];
+        const results: ClienteFormat[] = [];
 
         clients.forEach((client) => {
             if (client.lon === null || client.lat === null) {
@@ -47,11 +58,26 @@ export class SortClientsByAddressUseCase {
                 store.lon
             );
 
-            results.push({ nome: client.nome, distancia: distancia });
-            console.log(`A distância para ${client.nome} é ${distancia} km.`);
+            results.push(
+                { 
+                    id: client.id,
+                    nome: client.nome,
+                    email: client.email,
+                    telefone: client.telefone,
+                    rua: client.rua,
+                    numero: client.numero,
+                    bairro: client.bairro,
+                    cidade: client.cidade,
+                    estado: client.estado,
+                    lat: client.lat,
+                    lon: client.lon,
+                    distancia: distancia,
+                    creation_date: client.creation_date,
+                });
         });
+        results.sort((a, b) => a.distancia - b.distancia);
 
-        return results
+        return results.sort((a, b) => a.distancia - b.distancia);
     };
 
     private calcularDistancia(lat1: number, lon1: number, lat2: number, lon2: number): number {
