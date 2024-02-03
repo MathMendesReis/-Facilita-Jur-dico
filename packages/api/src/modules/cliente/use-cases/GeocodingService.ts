@@ -6,9 +6,15 @@ interface NominatimResult {
     lon: string;
 }
 
+// Interface que representa a estrutura da resposta da API Nominatim
+// Classe GeocodingService para obter coordenadas a partir de um endereço
+
 export class GeocodingService {
+    // Método assíncrono para obter coordenadas a partir de um endereço
+    // Método assíncrono independente, por isso usei o metodo static
     static async getCoordinatesFromAddress(address: string): Promise<{ latitude: string; longitude: string } | null> {
         try {
+            // Faz uma requisição para a API Nominatim para obter coordenadas para o endereço fornecido
             const response: AxiosResponse<NominatimResult[]> = await axios.get(
                 `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`
             );

@@ -1,6 +1,6 @@
 import { AdressStoreDB } from "../models/adressStore";
 import { FindAdressDB } from "../repositories/getAdressStore";
-
+// Interface que representa a estrutura para retornar o o endereço da loja
 export class FindAdressStoreUseCase {
     constructor(private getAllRegisterDB:FindAdressDB) {}
 

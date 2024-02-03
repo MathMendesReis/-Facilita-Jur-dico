@@ -4,6 +4,7 @@ import { AdressStoreRegisterRequest } from "../controllers/registerAdressStoreCo
 import { AdressStoreDataBase } from "../repositories/registerAdressStore";
 import { FindAdressStoreUseCase } from "./getAdressStore";
 
+// Interface que representa a estrutura da resposta que cadastra um endereço da loja
 export class RegisterAdressStoreUseCase {
      constructor(
         private DB:AdressStoreDataBase,
@@ -19,10 +20,13 @@ export class RegisterAdressStoreUseCase {
         
 
         const endereco = `${rua}, ${cidade}, ${estado}`;
+        // uso o metodo GeocodingService para pegar a latitude e lontitude do endereço informado
         const coordinates = await GeocodingService.getCoordinatesFromAddress(endereco);
 
         const addresDB = await this.getAdressStore.findAdressStore()
         
+
+        // verifico se já exite algum endereço cadastrado, caso exista, faço um update ao inves de insert
         if (addresDB.length > 0) {
             const AdressStoreDb = addresDB[0]
             const updateAdress = new AdressStoreModel(
@@ -36,8 +40,8 @@ export class RegisterAdressStoreUseCase {
                 new Date().toISOString()
                  )
             const update = updateAdress.AdressStoreDB()
-            const result = await this.DB.update(update,AdressStoreDb.id);
-            return update
+            await this.DB.update(update,AdressStoreDb.id);
+            return 
         }
         if (addresDB.length === 0) {
             const newAdress = new AdressStoreModel(
@@ -52,7 +56,7 @@ export class RegisterAdressStoreUseCase {
                  )
                  const AdressStoreDb = newAdress.AdressStoreDB()
                  await this.DB.register(AdressStoreDb);
-            return 'caso 2'
+            return
         }
 
     }

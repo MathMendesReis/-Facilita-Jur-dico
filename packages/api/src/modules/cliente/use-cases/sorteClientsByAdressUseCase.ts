@@ -17,7 +17,7 @@ interface ClienteFormat {
     distancia: number;
     creation_date: string;
   }
-
+// Interface que representa a estrutura para ordernar os clientes de acordo com a proximidade
 export class SortClientsByAddressUseCase {
     constructor(
         private ClienteUseCase: GetAllClienteUseCase,
@@ -72,14 +72,19 @@ export class SortClientsByAddressUseCase {
         return results
     }
     private calcularDistancia(lat1: number, lon1: number, lat2: number, lon2: number): number {
+        // Constante que representa o raio médio da Terra em quilômetros
         const R = 6371;
+        // Calcula a diferença de latitude e longitude em radianos
         const dLat = (lat2 - lat1) * (Math.PI / 180);
         const dLon = (lon2 - lon1) * (Math.PI / 180);
+        // Fórmula de Haversine para calcular a distância entre dois pontos em uma esfera
         const a =
             Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        // Calcula a distância em quilômetros
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        // Retorna a distância calculada
         const distancia = R * c;
         return distancia;
     }

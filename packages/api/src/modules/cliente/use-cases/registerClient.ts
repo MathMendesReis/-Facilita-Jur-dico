@@ -4,6 +4,7 @@ import { ClienteModel } from "../models/clienteModel";
 import { RegisterClienteDB } from "../repositories/register-client-repsitorie";
 import { GeocodingService } from "./GeocodingService";
 
+// Interface que representa a estrutura para registrar um cliente
 export class RegisterClientUseCase {
      constructor(private clienteDB:RegisterClienteDB) {}
 
@@ -11,11 +12,8 @@ export class RegisterClientUseCase {
         const rua = req.rua
         const cidade = req.cidade
         const estado = req.estado
-
         const endereco = `${rua}, ${cidade}, ${estado}`;
-        const coordinates = await GeocodingService.getCoordinatesFromAddress(endereco);
-
-       
+        const coordinates = await GeocodingService.getCoordinatesFromAddress(endereco);       
         const newCliente = new ClienteModel(
             req.nome,
             req.email,

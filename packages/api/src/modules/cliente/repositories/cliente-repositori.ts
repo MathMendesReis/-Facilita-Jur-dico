@@ -12,7 +12,7 @@ export class ClienteDB {
     
     } catch (error) {
       console.error('Erro ao obter todos os clientes:');
-      throw error; // Rejeita o erro para o chamador, se necessário
+      throw error; 
     }
   }
 }

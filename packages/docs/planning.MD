@@ -41,19 +41,19 @@
 ### Tarefas:
 1. [x] Implementar algoritmo para calcular a rota com a menor distância possível.
 2. [x] Disponibilizar a rota através de uma API para ser chamada pelo frontend.
-3. [ ] Criar um botão no frontend para acionar o cálculo da rota.
-4. [ ] Exibir a ordem de visitação dos clientes em uma modal.
+3. [x] Criar um botão no frontend para acionar o cálculo da rota.
+4. [x] Exibir a ordem de visitação dos clientes em uma modal.
 
 ---
 
 ## História 5: Documentação e Entrega
-- [ ] Como desenvolvedor, quero garantir que o projeto seja bem documentado e entregue conforme especificações.
+- [x] Como desenvolvedor, quero garantir que o projeto seja bem documentado e entregue conforme especificações.
 
 ### Tarefas:
-1. [ ] Documentar as escolhas e abordagens no desenvolvimento.
-2. [ ] Adicionar informações sobre como rodar o projeto no README.
-3. [ ] Enviar o link do repositório público para o e-mail especificado.
-4. [ ] Garantir que o código esteja bem comentado para explicar a lógica.
+1. [x] Documentar as escolhas e abordagens no desenvolvimento.
+2. [x] Adicionar informações sobre como rodar o projeto no README.
+3. [x] Enviar o link do repositório público para o e-mail especificado.
+4. [x] Garantir que o código esteja bem comentado para explicar a lógica.
 
 ---
 

@@ -2,6 +2,7 @@
 import { ClienteDB } from "../models/clienteModel";
 import { ClienteDB as ClienteDatabase } from "../repositories/cliente-repositori";
 
+// Interface que representa a estrutura da resposta que retorna os clientes cadastrados
 export class GetAllClienteUseCase {
     constructor(private clienteDB:ClienteDatabase) {}
 
