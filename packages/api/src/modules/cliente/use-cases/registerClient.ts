@@ -3,7 +3,6 @@ import { ClienteRegisterRequest } from "../controllers/registerCliente";
 import { ClienteModel } from "../models/clienteModel";
 import { RegisterClienteDB } from "../repositories/register-client-repsitorie";
 import { GeocodingService } from "./GeocodingService";
-const axios = require('axios');
 
 export class RegisterClientUseCase {
      constructor(private clienteDB:RegisterClienteDB) {}
@@ -13,7 +12,7 @@ export class RegisterClientUseCase {
         const cidade = req.cidade
         const estado = req.estado
 
-        const endereco = `Rua ${rua}, ${cidade}, ${estado}`;
+        const endereco = `${rua}, ${cidade}, ${estado}`;
         const coordinates = await GeocodingService.getCoordinatesFromAddress(endereco);
 
        
@@ -32,7 +31,7 @@ export class RegisterClientUseCase {
              )
 
         const clientDB = newCliente.clienteDB()
-        const response = await this.clienteDB.register(clientDB);
+        await this.clienteDB.register(clientDB);
         return
     }
 

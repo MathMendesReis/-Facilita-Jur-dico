@@ -1,3 +1,4 @@
+import { ClienteDB } from "../models/clienteModel";
 import { FindAdressStoreUseCase } from "./getAdressStore";
 import { GetAllClienteUseCase } from "./getAllClienteUseCase";
 
@@ -25,37 +26,30 @@ export class SortClientsByAddressUseCase {
 
     public sortClients = async () => {
         const clients = await this.ClienteUseCase.getAll();
-        const [addressStore] = await this.RegisterUseCase.findAdressStore();
-
-        if (addressStore.lon === null || addressStore.lat === null) {
+        const [addressStoreDB] = await this.RegisterUseCase.findAdressStore();
+        
+        if (addressStoreDB.lon === null || addressStoreDB.lat === null) {
             return [];
         }
+         const latNumero: number = parseFloat(addressStoreDB.lat);
+         const lonNumero: number = parseFloat(addressStoreDB.lon);
+         const results = await this.teste( clients,latNumero,lonNumero);
+         return results.sort((a, b) => a.distancia - b.distancia);
+    };
 
-        if (clients.length === 0) {
-            return [];
-        }
-
-        const latNumero: number = parseFloat(addressStore.lat);
-        const lonNumero: number = parseFloat(addressStore.lon);
-
-        const store = {
-            lat: latNumero,
-            lon: lonNumero,
-        };
-
+    private teste =async (clients: ClienteDB[],latNumero:number,lonNumero:number):Promise<ClienteFormat[]> => {
         const results: ClienteFormat[] = [];
 
         clients.forEach((client) => {
             if (client.lon === null || client.lat === null) {
-                console.log('Coordenadas nulas para cliente:', client.nome);
                 return; 
             }
 
             const distancia = this.calcularDistancia(
                 parseFloat(client.lat),
                 parseFloat(client.lon),
-                store.lat,
-                store.lon
+                latNumero,
+                lonNumero
             );
 
             results.push(
@@ -75,11 +69,8 @@ export class SortClientsByAddressUseCase {
                     creation_date: client.creation_date,
                 });
         });
-        results.sort((a, b) => a.distancia - b.distancia);
-
-        return results.sort((a, b) => a.distancia - b.distancia);
-    };
-
+        return results
+    }
     private calcularDistancia(lat1: number, lon1: number, lat2: number, lon2: number): number {
         const R = 6371;
         const dLat = (lat2 - lat1) * (Math.PI / 180);

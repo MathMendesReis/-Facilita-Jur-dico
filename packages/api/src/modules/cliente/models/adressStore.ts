@@ -34,7 +34,6 @@ export class AdressStoreModel {
   private _creation_date: string;
 
   constructor(
-    id:string,
     rua: string,
     numero: string | null,
     bairro: string,
@@ -44,7 +43,7 @@ export class AdressStoreModel {
     lon: string | null,
     creation_date: string
   ) {
-    this._id = id; // Gera um ID único
+    this._id = uuidv4(); // Gera um ID único
     this._rua = rua;
     this._numero = numero;
     this._bairro = bairro;

@@ -11,7 +11,7 @@ export class AdressStoreDataBase {
     return;
   };
 
-  public update = async (data: AdressStoreDB) => {
+  public update = async (data: AdressStoreDB,id:string) => {
     await sql`
       UPDATE adress_tb 
       SET 
@@ -23,9 +23,9 @@ export class AdressStoreDataBase {
         latitude = ${data.lat},
         longitude = ${data.lon},
         creation_date = ${data.creation_date}
-      WHERE id = ${data.id};
+      WHERE id = ${id};
     `;
-    return;
+    return data;
   };
 }
 

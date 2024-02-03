@@ -49,7 +49,7 @@ export function AddAndressStore() {
             <Label htmlFor="rua" className="text-right">
               Rua
             </Label>
-            <Input id="rua"  className="col-span-3" {...register('rua')}  />
+            <Input id="rua"  className="col-span-3" {...register('rua')}  placeholder={'praça doutor arthur fajardo'}/>
             {errors.rua?.message && <p>{errors.rua?.message}</p>}
 
           </div>
@@ -57,7 +57,7 @@ export function AddAndressStore() {
             <Label htmlFor="cidade" className="text-right">
               Cidade
             </Label>
-            <Input id="cidade"  className="col-span-3" {...register('cidade')}/>
+            <Input id="cidade"  className="col-span-3" {...register('cidade')} placeholder={'sorocaba'}/>
             {errors.cidade?.message && <p>{errors.cidade?.message}</p>}
 
           </div>
@@ -65,7 +65,7 @@ export function AddAndressStore() {
             <Label htmlFor="estado" className="text-right">
               Estado
             </Label>
-            <Input id="estado"  className="col-span-3" {...register('estado')}/>
+            <Input id="estado"  className="col-span-3" {...register('estado')} placeholder={'são paulo'}/>
             {errors.estado?.message && <p>{errors.estado?.message}</p>}
 
           </div>
@@ -73,7 +73,7 @@ export function AddAndressStore() {
             <Label htmlFor="bairro" className="text-right">
               Bairro
             </Label>
-            <Input id="bairro"  className="col-span-3" {...register('bairro')}/>
+            <Input id="bairro"  className="col-span-3" {...register('bairro')} placeholder={'centro'}/>
             {errors.bairro?.message && <p>{errors.bairro?.message}</p>}
 
           </div>
@@ -81,7 +81,7 @@ export function AddAndressStore() {
             <Label htmlFor="numero" className="text-right">
               Numero
             </Label>
-            <Input id="numero"  className="col-span-3"  {...register('numero')}/>
+            <Input id="numero"  className="col-span-3"  {...register('numero')} placeholder={'25b'}/>
             {errors.numero?.message && <p>{errors.numero?.message}</p>}
 
           </div>

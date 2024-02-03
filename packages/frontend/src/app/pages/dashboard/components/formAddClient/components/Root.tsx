@@ -21,56 +21,56 @@ export function Root() {
     )}>
       <Label>
         <Text className="text-sm text-start my-3">Nome</Text>
-        <Input {...register('nome')} />
+        <Input {...register('nome')} placeholder={'Pedro Alvares Cabral'}/>
         <div className="py-3">
           {errors.nome?.message && <p>{errors.nome?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Email</Text>
-        <Input {...register('email')} />
+        <Input {...register('email')} placeholder={'pedrinhoimperador@gmail.com'}/>
         <div className="py-3">
           {errors.email?.message && <p>{errors.email?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Telefone</Text>
-        <Input {...register('telefone')} />
+        <Input {...register('telefone')} placeholder={'22 998989898'} />
         <div className="py-3">
           {errors.telefone?.message && <p>{errors.telefone?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Rua</Text>
-        <Input {...register('rua')} />
+        <Input {...register('rua')} placeholder={'nicaragua'} />
         <div className="py-3">
           {errors.rua?.message && <p>{errors.rua?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Número</Text>
-        <Input {...register('numero')} />
+        <Input {...register('numero')} placeholder={'53'}/>
         <div className="py-3">
           {errors.numero?.message && <p>{errors.numero?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Bairro</Text>
-        <Input {...register('bairro')} />
+        <Input {...register('bairro')} placeholder={'rua do fogo'}/>
         <div className="py-3">
           {errors.bairro?.message && <p>{errors.bairro?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Cidade</Text>
-        <Input {...register('cidade')} />
+        <Input {...register('cidade')} placeholder={'sao pedro da aldeia'}/>
         <div className="py-3">
           {errors.cidade?.message && <p>{errors.cidade?.message}</p>}
         </div>
       </Label>
       <Label>
         <Text className="text-sm text-start my-3">Estado</Text>
-        <Input {...register('estado')} />
+        <Input {...register('estado')} placeholder={'são pedro da aldeia'} />
         <div className="py-3">
           {errors.estado?.message && <p>{errors.estado?.message}</p>}
         </div>

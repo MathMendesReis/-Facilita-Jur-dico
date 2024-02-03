@@ -30,7 +30,8 @@ const registerClienteController = new RegisterClienteController(
 
 const adressStoreRegisterController= new AdressStoreRegisterController(
     new RegisterAdressStoreUseCase(
-        new AdressStoreDataBase()
+        new AdressStoreDataBase(),
+        new FindAdressStoreUseCase(new FindAdressDB())
     )
 )
 const findAdressStoreController= new FindAdressStoreController(
