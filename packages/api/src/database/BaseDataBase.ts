@@ -6,7 +6,9 @@ const sql = postgres({
   user: 'postgres',
   password: 'docker',
   database: 'facilita-juridico',
+  
 });
 
 export default sql;
+
 

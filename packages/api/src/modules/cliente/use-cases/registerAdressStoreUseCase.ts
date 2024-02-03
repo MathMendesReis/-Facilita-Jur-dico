@@ -1,14 +1,15 @@
 import { AxiosResponse } from "axios";
 import { ClienteRegisterRequest } from "../controllers/registerCliente";
-import { ClienteModel } from "../models/clienteModel";
 import { RegisterClienteDB } from "../repositories/register-client-repsitorie";
 import { GeocodingService } from "./GeocodingService";
-const axios = require('axios');
+import { AdressStoreModel } from "../models/adressStore";
+import { AdressStoreRegisterRequest } from "../controllers/registerAdressStoreController";
+import { AdressStoreDataBase } from "../repositories/registerAdressStore";
 
-export class RegisterClientUseCase {
-     constructor(private clienteDB:RegisterClienteDB) {}
+export class RegisterAdressStoreUseCase {
+     constructor(private DB:AdressStoreDataBase) {}
 
-    public register = async (req:ClienteRegisterRequest) => {
+    public register = async (req:AdressStoreRegisterRequest) => {
         const rua = req.rua
         const cidade = req.cidade
         const estado = req.estado
@@ -17,10 +18,8 @@ export class RegisterClientUseCase {
         const coordinates = await GeocodingService.getCoordinatesFromAddress(endereco);
 
        
-        const newCliente = new ClienteModel(
-            req.nome,
-            req.email,
-            req.telefone,
+        const newAdress = new AdressStoreModel(
+            'b4bd6b9e-58a9-43a6-9e96-179faf3113cf',
             req.rua,
             req.numero || null,
             req.bairro,
@@ -31,9 +30,9 @@ export class RegisterClientUseCase {
             new Date().toISOString()
              )
 
-        const clientDB = newCliente.clienteDB()
-        const response = await this.clienteDB.register(clientDB);
-        return
+        const AdressStoreDb = newAdress.AdressStoreDB()
+         await this.DB.update(AdressStoreDb);
+        return AdressStoreDb
     }
 
     

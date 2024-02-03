@@ -1,10 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-interface Cliente {
+interface AdressStore {
   id?: string;
-  nome: string;
-  email: string;
-  telefone: string;
   rua: string;
   numero: string | null;
   bairro: string;
@@ -13,11 +10,8 @@ interface Cliente {
   creation_date: string;
 }
 
-export interface ClienteDB {
+export interface AdressStoreDB {
   id: string;
-  nome: string;
-  email: string;
-  telefone: string;
   rua: string;
   numero: string | null;
   bairro: string;
@@ -28,11 +22,8 @@ export interface ClienteDB {
   creation_date: string;
 }
 
-export class ClienteModel {
+export class AdressStoreModel {
   private _id: string;
-  private _nome: string;
-  private _email: string;
-  private _telefone: string;
   private _rua: string;
   private _numero: string | null;
   private _bairro: string;
@@ -43,9 +34,7 @@ export class ClienteModel {
   private _creation_date: string;
 
   constructor(
-    nome: string,
-    email: string,
-    telefone: string,
+    id:string,
     rua: string,
     numero: string | null,
     bairro: string,
@@ -55,10 +44,7 @@ export class ClienteModel {
     lon: string | null,
     creation_date: string
   ) {
-    this._id = uuidv4(); // Gera um ID único
-    this._nome = nome;
-    this._email = email;
-    this._telefone = telefone;
+    this._id = id; // Gera um ID único
     this._rua = rua;
     this._numero = numero;
     this._bairro = bairro;
@@ -79,20 +65,7 @@ export class ClienteModel {
   public getLat(): string | null  {
     return this._lat;
   }
-
-  public getnome(): string {
-    return this._nome;
-  }
-
-  public getemail(): string {
-    return this._email;
-  }
-
-  public gettelefone(): string {
-    return this._telefone;
-  }
-
-  public getrua(): string {
+  public getRua(): string   {
     return this._rua;
   }
 
@@ -116,18 +89,7 @@ export class ClienteModel {
     return this._creation_date;
   }
 
-  // Métodos setter
-  public setnome(nome: string) {
-    this._nome = nome;
-  }
 
-  public setemail(email: string) {
-    this._email = email;
-  }
-
-  public settelefone(telefone: string) {
-    this._telefone = telefone;
-  }
 
   public setrua(rua: string) {
     this._rua = rua;
@@ -160,13 +122,10 @@ export class ClienteModel {
     this._lon = lon;
   }
 
-  public clienteModel(): Cliente {
+  public AdressStoreModel(): AdressStore {
     return {
-      id: this.getid(),
-      nome: this.getnome(),
-      email: this.getemail(),
-      telefone: this.gettelefone(),
-      rua: this.getrua(),
+    
+      rua: this._rua,
       numero: this.getnumero(),
       bairro: this.getbairro(),
       cidade: this.getcidade(),
@@ -175,13 +134,10 @@ export class ClienteModel {
     };
   }
 
-  public clienteDB(): ClienteDB {
+  public AdressStoreDB(): AdressStoreDB {
     return {
       id: this.getid(),
-      nome: this.getnome(),
-      email: this.getemail(),
-      telefone: this.gettelefone(),
-      rua: this.getrua(),
+      rua: this.getRua(),
       numero: this.getnumero(),
       bairro: this.getbairro(),
       cidade: this.getcidade(),
