@@ -11,13 +11,16 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.listen(Number(process.env.PORT || 3003), () => {
-    const createDB = new CreateDB()
-    createDB.createTablecliente_tb()
-    createDB.createTableadress_tb()
-    console.log(`Servidor rodando na porta ${process.env.PORT}`)
+app.listen(Number(3003), () => {
+  console.log(`Servidor rodando na porta 3003`);
+});
 
-})
+app.on('listening', async () => {
+  const createDB = new CreateDB();
+  await createDB.createTablecliente_tb();
+  await createDB.createTableadress_tb();
+  console.log(`Tabelas criadas`);
+});
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).send('hello world');
