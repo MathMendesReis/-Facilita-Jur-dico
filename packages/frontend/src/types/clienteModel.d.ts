@@ -3,7 +3,10 @@ export interface clienteModel {
     nome: string,
     email: string,
     telefone: string,
-    coordenada_x: number,
-    coordenada_y: number,
-    creation_date: string
+    rua: string;
+    numero: string | null;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    creation_date: string;
 }

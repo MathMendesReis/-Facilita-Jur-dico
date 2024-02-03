@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { Text } from "@/components/ui/text";
-import { useClientFecth } from "@/hook/useClients";
+import { useClientFecth } from "@/hook/useCliente";
 import { clienteModel } from "@/types/clienteModel";
 import { useState } from "react";
 
@@ -18,6 +18,7 @@ export function TableWithListClients() {
         ...searchTermByEmail,
         ...searchTermByPhone,
     ]);
+    
     const filteredClientes = Array.from(filteredClientesSet);
     return(
         <>
@@ -33,13 +34,19 @@ export function TableWithListClients() {
              <TableRow>
                 <TableHead className="w-[330px]">nome</TableHead>
                 <TableHead>email</TableHead>
+                <TableHead>rua</TableHead>
+                <TableHead>bairro</TableHead>
+                <TableHead>cidade</TableHead>
                 <TableHead className="text-right">telefone</TableHead>
                 </TableRow>
                 <TableBody>
-                {filteredClientes.map(({id,nome,telefone,email}) => (
+                {filteredClientes.map(({id,nome,telefone,email,rua,bairro,cidade}) => (
                     <TableRow key={id}>
                         <TableCell className="font-medium">{nome}</TableCell>
-                        <TableCell>{email}</TableCell>
+                        <TableCell className="font-medium">{email}</TableCell>
+                        <TableCell className="font-medium">{rua}</TableCell>
+                        <TableCell className="font-medium">{bairro}</TableCell>
+                        <TableCell className="font-medium">{cidade}</TableCell>
                         <TableCell  className="text-right">{telefone}</TableCell> 
                     </TableRow>
                     ))}
@@ -52,14 +59,7 @@ export function TableWithListClients() {
                     <Text> Não há registros de clientes</Text>
                  </Card>
 
-                 </>}
-
-                 {/* <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58823.57767986739!2d-42.293657599999996!3d-22.858956799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x976f309b920fc3%3A0xa6f1d838d786d4ca!2sAssa%C3%AD%20Araruama!5e0!3m2!1sen!2sbr!4v1706885496475!5m2!1sen!2sbr" 
-                 width="800" 
-                 height="600" 
-                 loading="lazy" 
-                 ></iframe> */}
+                 </>}              
             </main>
         </>
     )

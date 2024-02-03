@@ -3,17 +3,21 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Text } from "@/components/ui/text";
-import { useCustomForm } from "./useFormsAddClient";
+import { Schema, useCustomForm } from "./useFormsAddClient";
 import { useAddNewClient } from "@/hook/useAddNewClient";
 import { Button } from "@/components/ui/button";
 
 export function Root() {
-  const { handleSubmit, register, errors } = useCustomForm();
+  const { handleSubmit, register, errors,reset } = useCustomForm();
   const { fecth } = useAddNewClient();
+  const onSubmit = async (data: Schema) => {
+    await fecth(data);
+    reset()
+  };
 
   return (
     <form onSubmit={handleSubmit((data) => 
-    fecth(data)
+      onSubmit(data)
     )}>
       <Label>
         <Text className="text-sm text-start my-3">Nome</Text>

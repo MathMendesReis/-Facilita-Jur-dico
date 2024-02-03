@@ -11,10 +11,19 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Text } from "@/components/ui/text"
-import { useCustomFormDialog } from "./useFormDIalog"
+import { Schema, useCustomFormDialog } from "./useFormDIalog"
+import { useAddNewAddresStore } from "@/hook/useAddNewAddresStore"
+import { useAdressStoreFecth } from "@/hook/useAdressStoreFecth"
 
 export function AddAndressStore() {
- const {errors,handleSubmit,register,reset,schema } = useCustomFormDialog()
+ const {errors,handleSubmit,register,reset } = useCustomFormDialog()
+ const {isPending} = useAdressStoreFecth()
+ const {fecth} = useAddNewAddresStore()
+ const onSubmit = async (data: Schema) => {
+  await fecth(data);
+  reset()
+};
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -28,11 +37,13 @@ export function AddAndressStore() {
             <Text className="text-base">editar endereço</Text>
           </DialogTitle>
           <DialogDescription>
+          <Text className="text-base font-normal">
             Adicione o endereço da sua loja
+          </Text>
           </DialogDescription>
         </DialogHeader>
-        <form 
-         onSubmit={handleSubmit((d)=>console.log(d))}
+        {!isPending && <form 
+         onSubmit={handleSubmit((d)=>onSubmit(d))}
         >
             <div className="grid gap-4 py-4">
 
@@ -40,7 +51,7 @@ export function AddAndressStore() {
             <Label htmlFor="rua" className="text-right">
               Rua
             </Label>
-            <Input id="rua"  className="col-span-3" {...register('rua')} />
+            <Input id="rua"  className="col-span-3" {...register('rua')}  />
             {errors.rua?.message && <p>{errors.rua?.message}</p>}
 
           </div>
@@ -81,7 +92,7 @@ export function AddAndressStore() {
         <DialogFooter>
           <Button type="submit">Salvar</Button>
         </DialogFooter>
-        </form>
+        </form>}
       </DialogContent>
     </Dialog>
   )
