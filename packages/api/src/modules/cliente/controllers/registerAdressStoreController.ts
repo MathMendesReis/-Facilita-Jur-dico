@@ -1,24 +1,18 @@
 import { Request, Response } from 'express';
-import { RegisterClientUseCase } from '../use-cases/registerClient';
-export interface ClienteRegisterRequest {
-    nome: string;
-    email: string;
-    telefone: string;
+import { RegisterAdressStoreUseCase } from '../use-cases/registerAdressStoreUseCase';
+export interface AdressStoreRegisterRequest {
     rua:string,
     numero:string | null,
     bairro:string,
     cidade:string,
     estado:string,
   }
-export class RegisterClienteController {
-    constructor(private useCase:RegisterClientUseCase) {}
+export class AdressStoreRegisterController {
+    constructor(private useCase:RegisterAdressStoreUseCase) {}
 
-    public registerCliente = async (req: Request, res: Response) => {
+    public registerAdressStore = async (req: Request, res: Response) => {
         try {
-            const body:ClienteRegisterRequest = {
-                nome:req.body.nome,
-                email:req.body.email,
-                telefone:req.body.telefone,
+            const body:AdressStoreRegisterRequest = {
                 rua:req.body.rua,
                 numero:req.body.numero,
                 bairro:req.body.bairro,

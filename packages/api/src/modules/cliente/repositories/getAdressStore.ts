@@ -1,18 +1,17 @@
+import postgres from "postgres";
 import sql from "../../../database/BaseDataBase";
 
-
-
-export class ClienteDB {
-  public findAllClients = async () => {
+export class FindAdressDB {
+  public getAll = async ():Promise<postgres.RowList<postgres.Row[]>> => {
     try {
      const reste = await sql`
-        SELECT * FROM cliente_tb;
+        SELECT * FROM adress_tb ;
       `;
       return reste;
     
     } catch (error) {
       console.error('Erro ao obter todos os clientes:');
-      throw error; // Rejeita o erro para o chamador, se necessário
+      throw error;
     }
   }
 }
