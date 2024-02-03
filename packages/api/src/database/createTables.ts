@@ -20,7 +20,7 @@ export class CreateDB {
             longitude VARCHAR(50),
             creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
           );`;
-  
+        console.log('create table cliente_tb')
           
         return;
       
@@ -44,6 +44,8 @@ export class CreateDB {
             creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
             );
         `
+        console.log('create table adress_tb ')
+
         return;
       
       } catch (error) {

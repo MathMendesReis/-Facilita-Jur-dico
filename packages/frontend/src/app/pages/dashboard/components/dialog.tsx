@@ -13,11 +13,9 @@ import { Label } from "@/components/ui/label"
 import { Text } from "@/components/ui/text"
 import { Schema, useCustomFormDialog } from "./useFormDIalog"
 import { useAddNewAddresStore } from "@/hook/useAddNewAddresStore"
-import { useAdressStoreFecth } from "@/hook/useAdressStoreFecth"
 
 export function AddAndressStore() {
  const {errors,handleSubmit,register,reset } = useCustomFormDialog()
- const {isPending} = useAdressStoreFecth()
  const {fecth} = useAddNewAddresStore()
  const onSubmit = async (data: Schema) => {
   await fecth(data);
@@ -42,7 +40,7 @@ export function AddAndressStore() {
           </Text>
           </DialogDescription>
         </DialogHeader>
-        {!isPending && <form 
+       <form 
          onSubmit={handleSubmit((d)=>onSubmit(d))}
         >
             <div className="grid gap-4 py-4">
@@ -92,7 +90,7 @@ export function AddAndressStore() {
         <DialogFooter>
           <Button type="submit">Salvar</Button>
         </DialogFooter>
-        </form>}
+        </form>
       </DialogContent>
     </Dialog>
   )
