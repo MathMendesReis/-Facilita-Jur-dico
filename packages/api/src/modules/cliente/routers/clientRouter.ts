@@ -13,12 +13,14 @@ import { SorteClientsByAdressController } from '../controllers/sorteClientsByAdr
 import { SortClientsByAddressUseCase } from '../use-cases/sorteClientsByAdressUseCase';
 import { FindAdressStoreUseCase } from '../use-cases/getAdressStore';
 import { FindAdressDB } from '../repositories/getAdressStore';
+import { CreateDB } from '../../../database/createTables';
 
 
 export const clientRouter = Router();
 const findAllClientes = new FindAllClientesController(
     new GetAllClienteUseCase(
-    new ClienteDB()
+    new ClienteDB(),
+    new CreateDB()
     ),
 )
 
@@ -41,7 +43,7 @@ const findAdressStoreController= new FindAdressStoreController(
 )
 const sorteClientsByAdressController = new SorteClientsByAdressController(
     new SortClientsByAddressUseCase(
-        new GetAllClienteUseCase(new ClienteDB()),
+        new GetAllClienteUseCase(new ClienteDB(), new CreateDB()),
         new FindAdressStoreUseCase(new FindAdressDB())
     )
 )

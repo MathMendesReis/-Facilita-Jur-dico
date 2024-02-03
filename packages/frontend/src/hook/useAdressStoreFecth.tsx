@@ -20,7 +20,7 @@ export function useAdressStoreFecth() {
         return instance.get(API_URL)
       }
     const { isPending, error, data } = useQuery({
-        queryKey: ['useAdressStoreFecth'],
+        queryKey: ['useAdressStoreFecth','useClienteOderByRouter'],
         queryFn: () => fecth(),
       })
 

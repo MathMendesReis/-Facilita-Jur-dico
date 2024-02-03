@@ -1,12 +1,18 @@
 
+import { CreateDB } from "../../../database/createTables";
 import { ClienteDB } from "../models/clienteModel";
 import { ClienteDB as ClienteDatabase } from "../repositories/cliente-repositori";
 
 // Interface que representa a estrutura da resposta que retorna os clientes cadastrados
 export class GetAllClienteUseCase {
-    constructor(private clienteDB:ClienteDatabase) {}
+    constructor(
+        private clienteDB:ClienteDatabase,
+        private createDB:CreateDB,
+        ) {}
 
     public getAll = async () => {
+        await this.createDB.createTablecliente_tb();
+        await this.createDB.createTableadress_tb();
         const response = await this.clienteDB.findAllClients();
         const responseFormat: ClienteDB[] = response.map((item) => {
             return {

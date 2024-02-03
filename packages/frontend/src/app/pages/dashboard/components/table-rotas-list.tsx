@@ -53,7 +53,7 @@ export function TableListRouter() {
              {clientes.length === 0 && 
                  <>
                  <Card className="w-full min-h-[50vh] flex items-center justify-center">
-                    <Text> Não há registros de clientes</Text>
+                    <Text> Insira o endereço da loja</Text>
                  </Card>
 
                  </>}              

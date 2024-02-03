@@ -11,7 +11,6 @@ services:
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: facilita-juridico
       PGDATA: /data/postgres
-    volumes:
-      - ./data/pg:/data/postgres
+ 
 
   
