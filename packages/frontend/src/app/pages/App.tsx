@@ -13,26 +13,23 @@ export function App() {
                 <Text className="text-base">Facilita juridico</Text>
             </div>
            </div>
-            <button>
-              <Text className="text-base">Ir para dashboard</Text>
-            </button>
+            
           </section>
       </header>
       <Card className=" min-h-[85vh] grid grid-cols-12">
         <aside className="col-span-5 flex flex-col justify-end items-end bg-[#2563eb] rounded-md pb-4">
-        <div className="px-5">
-          <Text className="text-base text-[#ffffff]">“This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.”
-          Sofia Davis</Text>
-        </div>
+       
        
         </aside>
         <main className="col-span-7 col-start-6 grid grid-rows-4 grid-cols-7">
           <section className=" min-w-16 min-h-16 row-start-2 row-span-2 col-start-2 col-span-5">
            <div className="max-w-[350px] flex flex-col  gap-4">
             <Text>Seja bem-vindo ao teste de Programação Desenvolvedor Facilita Jurídico</Text>
+             <Link to={'https://github.com/MathMendesReis/Facilita_Juridico.git'} target="_blank">
               <Button className="w-full bg-[#2563eb] hover:opacity-95 hover:bg-[#2563eb]">
-                <p>ir para codigo fonte</p>
-              </Button>
+                  <p>ir para codigo fonte</p>
+                </Button>
+             </Link>
               <div>
                <div className="flex items-center">
                 <div className="bg-[#0f172a] h-[1px] w-full opacity-65"/>

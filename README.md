@@ -23,9 +23,10 @@ Para rodar o projeto localmente, siga as instruções abaixo:
 ## Backend (Node.js com PostgreSQL)
 - Clone o repositório: git clone https://github.com/MathMendesReis/-Facilita-Jur-dico.git
 - certifique-se que está na pasta faciita-juridico
+- necessario ter o docker
 - Instale as dependências: npm install
 - Execute o servidor: npm run start
-
+- o frontend vai rodar na porta http://localhost:5173/
 ## Banco de Dados - DDL
 A estrutura da tabela no banco de dados PostgreSQL é definida pelo seguinte DDL:
 ```sql 
@@ -85,5 +86,15 @@ CREATE TABLE adress_tb (
 - methodo : post
 - path: <strong>http://localhost:3003/register/adress'</strong>
 
+### Tecnologias utilizadas
+
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white)
 ## Conclusão
 Este teste foi desenvolvido para avaliar habilidades básicas e lógica na resolução de problemas. As escolhas e abordagens adotadas foram documentadas para melhor compreensão. Em caso de dúvidas, favor entrar em contato para esclarecimentos adicionais.

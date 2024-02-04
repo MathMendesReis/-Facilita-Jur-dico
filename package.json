@@ -8,7 +8,7 @@
     "start:backend": "cd packages && cd api && npm run dev",
     "start:frontend:build": "cd packages && cd frontend && npm run build && npm run dev",
     "start:backend:build": "cd packages && cd api && npm run build && npm run dev",
-    "start": "npm-run-all --parallel start:docker start:backend start:frontend",
+    "start": "npm-run-all --parallel  start:docker start:backend start:frontend",
     "start:docker:start": "cd packages && cd docker &&  docker start  facilita-juridico-pg",
     "start:docker": "cd packages && cd docker && docker compose -f docker-compose.yml up --force-recreate"
   },
